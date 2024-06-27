@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="altstyles.css">
+    <title>SpaceTech</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("https://gas-kvas.com/uploads/posts/2023-02/1675426626_gas-kvas-com-p-fonovii-risunok-dlya-rabochego-stola-kosmo-39.jpg"); 
+            background-size: cover;
+        }
+
+        .container {
+            margin-top: 150px; 
+        }
+
+        .form-group {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .error {
+            color: red;
+    }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SpaceTech</h1>
+    <nav>
+        <a href="home.html">Главная</a>
+        <a href="issues.html">Статьи</a>
+        <a href="aboutus.html">О нас</a>
+        <a href="registration.html">Регистрация</a>
+    </nav>
+</header>
+
+<div class="container">
+  <form id="registrationForm">
+      <div class="form-group">
+          <label for="username">Имя пользователя:</label>
+          <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+          <label for="password">Пароль:</label>
+          <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+          <label for="confirmPassword">Подтвердите пароль:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required>
+      </div>
+      <button type="submit" id="submitButton">Зарегистрироваться</button>
+  </form>
+</div>
+
+
+<footer>
+    <p>Ваши права защищены &copy; 2024</p>
+</footer>
+
+<script>
+    const form = document.getElementById("registrationForm");
+    const submitButton = document.getElementById('submitButton');
+    const username = document.getElementById('username');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+
+    form.addEventListener('submit', function(event){
+        //event.preventDefault();
+
+        const formData = {
+            username: username.value,
+            email: email.value,
+            password: password.value
+        };
+
+        console.log(formData);
+        alert("Пользователь зарегистрирован");
+    });
+
+    function checkFormValidity(){
+        const usernameValid = username.value.trim() !== '';
+        const emailValid = email.value.trim() !== '';
+        const passwordValid = password.value.trim() !== '';
+        const confirmPasswordValid = confirmPassword.value.trim() !== '' &&
+            confirmPassword.value === password.value;
+
+        if (usernameValid && emailValid && passwordValid && confirmPasswordValid) {
+            if(!email.value.includes("@")){
+            alert("Неверный email!");
+            }
+            submitButton.disabled = false;
+            
+        }else {
+            submitButton.disabled = true;
+        }
+    }
+
+    username.addEventListener('input', checkFormValidity);
+    email.addEventListener('input', checkFormValidity);
+    password.addEventListener('input', checkFormValidity);
+    confirmPassword.addEventListener('input', checkFormValidity);
+
+</script>    
+</body>
+</html>

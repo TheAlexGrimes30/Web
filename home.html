@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Сайт для выполнения лабараторных работ.
+     Представляет собой web-сайт новостей о космических технологиях и явлениях. Главная страница сайта">
+     <meta name="author" content="Александр Гопиенко">
+    <title>SpaceTech</title>
+    <link rel="stylesheet" href="sasstyles.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("https://gas-kvas.com/uploads/posts/2023-02/1675426626_gas-kvas-com-p-fonovii-risunok-dlya-rabochego-stola-kosmo-39.jpg"); 
+            background-size: cover;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SpaceTech</h1>
+        <nav>
+            <a href="home.html">Главная</a>
+            <a href="issues.html">Статьи</a>
+            <a href="aboutus.html">О нас</a>
+            <a href="registration.html">Регистрация</a>
+        </nav>
+    </header>
+    <div class="container">
+        
+        <h1 id = "space_news" style="font-size: 32px;">Космические новости!</h1>
+        <p class="introduce">Здесь вы найдете интересный контент из мира космоса.</p>
+        <h3 id="headline">Оглавление</h3>
+        <ol>
+            <li><a href="#planet_describtion">Описание</a></li>
+            <li><a href="#planet_news">Последние новости</a></li>
+            <li><a href="#planet_facts">Интересные факты</a></li>
+        </ol>
+        <h3 class="page_head">Доказательства существования воды на Марсе</h3>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                
+                
+                <div class="col-sm-4">
+                    <img class="planet_image" src="https://wp-s.ru/wallpapers/3/0/493079832528392/oboi-landshafta-marsa-korichnevyj.jpg"
+                    alt="Изображение поверхности">
+                </div>
+
+                
+            </div>
+        </div>
+        
+        <hr class="solid">
+
+        <h2 class="page_head">Описание</h2>
+        <strong><p class="information">
+            Четвёртая планета Солнечной системы. Самый изучаемый объект Солнечной системы!
+        </p></strong>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Заголовок</th>
+                <th scope="col">Содержание</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Последние новости</td>
+                <td>Марсоход NASA Perseverance собрал данные,
+                    которые доказывают существование древних озерных отложений,
+                    созданных водой. Она когда-то заполняла гигантскую впадину на Марсе.</td>
+              </tr>
+              <tr>
+                <td>Интересные факты</td>
+                <td>И по сей день на Марсе хватает воды,
+                    но только в виде льда. Дело в том, что сегодня средняя температура поверхности планеты равна минус 63°С.
+                    Лишь вблизи экватора она иногда поднимается выше нуля. Тогда содержащийся в грунте лед может растаять.</td>
+              </tr>
+            </tbody>
+          </table>
+
+        <h2>Сайты аналогичной тематики:</h2>
+        <ul>
+            <li><a href="https://prokosmos.ru/?ysclid=ls69r90lbt879501684">PROKOSMOS</a></li>
+            <li><a href="https://o-kosmose.com/?ysclid=ls69u4b6tw93519997">KOCMOCE com</a></li>
+            <li><a href="https://aboutspacejournal.net/?ysclid=ls69wqgmnv280604996">Всё о космосе</a></li>
+        </ul>
+
+        
+    </div>
+    <footer>
+        <p>Ваши права защищены &copy; 2024</p>
+    </footer>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", (event)=>{
+            const links = document.querySelectorAll("a");
+            console.log("Links:")
+            links.forEach(link => {
+                console.log(link.href);
+            });
+
+            const anchors = document.querySelectorAll('a[href^="#"]');
+            console.log('Anchors:');
+            anchors.forEach(anchor => {
+                console.log(anchor.getAttribute('href'));
+            });
+
+            const images = document.querySelectorAll('img');
+            console.log('Images:')
+            images.forEach(image => {
+                console.log(image);
+            });
+
+        });
+
+        const header = document.querySelector("header");
+        header.addEventListener("mouseup", () => {
+            console.log("You moved mouse up on header!");
+        });
+
+        const footer = document.querySelector("footer");
+        footer.addEventListener("mouseover", () => {
+            console.log("you moved the mouse cursor on footer!");
+        });
+
+        const images = document.querySelectorAll('.planet_image');
+        const imageUrls = [
+            "https://strek-time.ru/wp-content/uploads/d/0/c/d0cc49cccc7857301415d1da4a71157e.jpeg",
+            "https://wp-s.ru/wallpapers/3/0/493079832528392/oboi-landshafta-marsa-korichnevyj.jpg",
+            "https://ixbt.online/live/images/original/04/23/83/2021/08/21/3b2c37851e.jpg"
+        ];
+        let currentIndex = 0;
+
+        images.forEach((image, index) => {
+            image.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % imageUrls.length;
+                image.src = imageUrls[currentIndex];
+            });
+        });
+    </script>
+</body>
+</html>

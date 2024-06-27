@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dynamic lists">
+    <title>Space news</title>
+    <link rel="stylesheet" href="sasstyles.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("https://gas-kvas.com/uploads/posts/2023-02/1675426626_gas-kvas-com-p-fonovii-risunok-dlya-rabochego-stola-kosmo-39.jpg");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SpaceTech</h1>
+        <nav>
+            <a href="home.html">Главная</a>
+            <a href="issues.html">Статьи</a>
+            <a href="aboutus.html">О нас</a>
+            <a href="registration.html">Регистрация</a>
+        </nav>
+    </header>
+    
+    
+    <div class="container">
+        <h1 id="space_news" style="font-size: 32px;">Космические новости!</h1>
+
+        <h3 id="headline">Статьи</h3>
+        <ol id="dynamicList">
+            <li>Вода на Марсе</li>
+            <li>Добыча полезных ископаемых на астеройдах</li>
+            <li>Гелий 3 на Луне</li>
+        </ol>
+        
+        <h3>Добавить статью в список</h3>
+        <form id="addItemForm">
+            <label for="newItem">Новая статья:</label>
+            <input type="text" id="newItem" name="newItem">
+            <button type="submit" id="addButton">Добавить</button>
+        </form>
+
+        <button id="removeButton">Удалить</button>
+        
+    </div>
+    <footer>
+        <p>Ваши права защищены &copy; 2024</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const addButton = document.getElementById("addButton");
+            const removeButton = document.getElementById("removeButton");
+            const dynamicList = document.getElementById("dynamicList");
+            const addItemFrom = document.getElementById("addItemForm");
+
+            function addListItem(text){
+                const newItem = document.createElement("li");
+                newItem.textContent = text;
+                dynamicList.appendChild(newItem);
+            }
+
+            function removeLastItem(){
+                if (dynamicList.children.length > 0){
+                    dynamicList.removeChild(dynamicList.lastElementChild);
+                }
+            }
+
+            removeButton.addEventListener("click", function(event){
+                event.preventDefault();
+                removeLastItem();
+            });
+
+            addItemForm.addEventListener("submit", function(event){
+                event.preventDefault();
+                const newItemInput = document.getElementById("newItem");
+                const newItemText = newItemInput.value.trim();
+                if(newItem != ""){
+                    addListItem(newItemText);
+                    newItemInput.value = "";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
